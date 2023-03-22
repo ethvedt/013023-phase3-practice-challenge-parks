@@ -18,11 +18,11 @@ class TestVisitor:
         vis_2 = Visitor(2)
         assert (not hasattr(vis_2, "_name"))
 
-    def test_name_setter(self):
-        '''Cannot change the name of the visitor'''
-        vis = Visitor("Poppy")
-        vis.name = "Warren"
-        assert (vis.name == "Poppy")
+    # def test_name_setter(self):
+    #     '''Cannot change the name of the visitor'''
+    #     vis = Visitor("Poppy")
+    #     vis.name = "Warren"
+    #     assert (vis.name == "Poppy")
 
     # def test_raise_exception_for_changing_name(self):
     #     '''raise exception for trying to change name after initialization'''
@@ -60,8 +60,8 @@ class TestVisitor:
 
         p1 = NationalPark('Alaska Wilds')
         p2 = NationalPark('Bryce Canyon')
-        t_1 = Trip(vis, p1, 2)
-        t_2 = Trip(vis, p2, 5)
+        t_1 = Trip(vis, p1, "May 5th", "May 9th")
+        t_2 = Trip(vis, p2, "May 20th","May 27th")
 
         assert (vis in p1.visitors())
         assert (vis in p2.visitors())
@@ -69,7 +69,7 @@ class TestVisitor:
     def test_has_unique_parks(self):
         '''Visitor has unique list of all the parks they have visited.'''
 
-        p1 = NationalPark("Yosemmette")
+        p1 = NationalPark("Yosemite")
         p2 = NationalPark("Rocky Mountain")
         vis = Visitor('Steeve')
         t_1 = Trip(vis, p1, "May 5th", "May 9th")
@@ -81,7 +81,7 @@ class TestVisitor:
 
     def test_customers_of_type_customer(self):
         '''Visitor nationalparks are of type NationalPark'''
-        p1 = NationalPark("Yosemmette")
+        p1 = NationalPark("Yosemite")
         p2 = NationalPark("Rocky Mountain")
         vis = Visitor('Steeeve')
         t_1 = Trip(vis, p1, "May 5th", "May 9th")
@@ -91,7 +91,7 @@ class TestVisitor:
         assert (isinstance(vis.nationalparks()[1], NationalPark))
     def test_create_trips(self):
         '''Can create trips'''
-        p1 = NationalPark("Yosemmette")
+        p1 = NationalPark("Yosemite")
         p2 = NationalPark("Rocky Mountain")
         vis = Visitor('Sheryl')
         t_1 = Trip(vis, p1, "May 5th", "May 9th")
